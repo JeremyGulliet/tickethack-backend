@@ -6,7 +6,7 @@ const Cart = require('../models/cart');
 // Route GET
 
 router.get("/", (req, res) => {
-    Cart.find({isPaid: false}).populate('trip').then(data => {
+    Cart.find({isPaid: false}).then(data => {
         res.json({allTrips: data})
     });
 });
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 router.delete('/', (req, res) => {
     const {id} = req.body;
 
-    Cart.deleteOne(id).populate('trips').then(() => {
+    Cart.deleteOne(id).then(() => {
         res.json("Trip deleted!")
     })
 

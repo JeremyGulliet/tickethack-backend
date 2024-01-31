@@ -7,7 +7,7 @@ const Cart = require('../models/cart');
 // Route GET
 
 router.get("/", (req, res) => {
-    Cart.find({isPaid: true}).populate('trip').then(data => {
+    Cart.find({isPaid: true}).then(data => {
         res.json({allTrips: data})
     });
 });
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 router.put('/', (req, res) => {
 
     const {id} = req.body;
-    Cart.updateOne({id}, {isPaid: true}).populate('trip').then(() => {
+    Cart.updateOne({id}, {isPaid: true}).then(() => {
         res.json("Bookings updated!")
     })
   });

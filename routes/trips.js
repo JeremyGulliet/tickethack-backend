@@ -34,10 +34,12 @@ router.get("/:departure/:arrival/:date", (req, res) => {
 // route POST pour ajouter le trajet au panier
 
 router.post('/', (req, res) => {
-    const {id} = req.body;
     
     const saveTrip = new Cart({
-        trip: id,
+        departure: req.body.departure,
+        arrival: req.body.arrival,
+        date: req.body.date,
+        price: req.body.price,
         isPaid: false,
     })
     saveTrip.save().then (() => {

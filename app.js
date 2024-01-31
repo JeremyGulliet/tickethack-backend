@@ -16,15 +16,12 @@ var app = express()
 
 const cors = require("cors") // Installation de Cors
 
-const corsOptions = {
+/* const corsOptions = {
   origin: function (origin, callback) {
     // Remplacee 'allowedOrigins' avec vos différents URLs front pouvant accéder au Backend
     const allowedOrigins = [
-      "http://localhost:4000",
-      "http://localhost:4001",
-      "https://www.tablee.app",
-      "http://192.168.0.35:4000",
-      "http://192.168.0.35:4001"
+      "http://localhost:3000/",
+     
     ];
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
@@ -34,9 +31,9 @@ const corsOptions = {
   },
   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
   methods: ["GET", "POST", "PUT", "DELETE"],
-};
+}; */
 
-app.use(cors(corsOptions)) // Installation de Cors
+ app.use(cors()) // Installation de Cors
 
 app.use(logger("dev"))
 app.use(express.json())
