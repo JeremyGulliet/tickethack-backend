@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 router.put('/', (req, res) => {
 
     const {id} = req.body;
-    Cart.updateOne({id}, {isPaid: true}).then(() => {
+    Cart.updateMany({id}, {isPaid: true}).then(() => {
         res.json("Bookings updated!")
     })
   });
