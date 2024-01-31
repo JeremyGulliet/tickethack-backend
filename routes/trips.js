@@ -34,18 +34,24 @@ router.get("/:departure/:arrival/:date", (req, res) => {
 // route POST pour ajouter le trajet au panier
 
 router.post('/', (req, res) => {
-    
+   
     const saveTrip = new Cart({
         departure: req.body.departure,
         arrival: req.body.arrival,
         date: req.body.date,
-        price: req.body.price,
-        isPaid: false,
+        price: Number(req.body.price),
+       isPaid: false,
     })
-    saveTrip.save().then (() => {
+    saveTrip.save().then((newDoc) => {
+        console.log(newDoc);
         res.json("Trip added!")
     });
 
 });
+
+/* router.delete('/delete', (req, res) => {
+        Cart.deleteMany({}).then( () => console.log("Delete ok"))
+
+}) */
 
 module.exports = router
